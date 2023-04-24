@@ -1,0 +1,20 @@
+{% if not tasks %}
+<tr>
+    <th colspan="100">No tasks!!</th> 
+</tr>
+{% endif %}
+{% for task in tasks %}
+<tr>
+    <th scope="row">{{forloop.counter}}</th>
+    <th>{{task.name}}</th>
+    <th>{{task.priority}}</th>
+    <th>
+        <i class="bi-x-square" 
+            style="color:red;cursor: pointer;" 
+            hx-delete="{% url 'delete_task' task.pk %}"
+            hx-target="#tasks_list"
+            hx-confirm="Are you sure you wish to delete {{task.name}}?">
+        </i>
+    </th>
+</tr>
+{% endfor %}

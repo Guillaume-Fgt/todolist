@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- pico -->
+    <link rel="stylesheet" href="{% static 'css/pico.min.css' %}">
+    <!-- htmx -->
+    <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+    <!-- bootstrap_icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <!--hyperscript-->
+    <script src="https://unpkg.com/hyperscript.org@0.9.8"></script>
+    <title>ToDoList</title>
+</head>
+
+<body hx-headers='{"X-CSRFToken" : "{{ csrf_token }}"}'>
+    <header class="container">
+        <hgroup>
+            <h1>ToDoList app</h1>
+            <h2>A basic todolist app applying CRUD basics using HTMX and Hyperscript.</h2>
+          </hgroup>
+        {% include 'partials/navbar.html' %}
+    </header>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="container">
+        <a href="https://github.com/Guillaume-Fgt"><i class="bi-github"></i> Github profile</a>
+    </footer>
+
+    <!-- Minimal theme switcher -->
+    <script src="{% static 'js/minimal-theme-switcher.js' %}"></script>
+
+</body>
+
+</html>

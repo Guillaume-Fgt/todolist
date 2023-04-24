@@ -1,0 +1,31 @@
+<div id="add-task-form" hidden>
+    <form  hx-post="{% url 'add_task' %}" hx-target="#tasks_list" 
+        _="on htmx:afterRequest remove @hidden from #add-task-btn then add @hidden to #add-task-form then put '' into <input#task />'s value">
+        {% csrf_token %}
+        <div class="grid">
+            <label>Task name
+                <input type="text" id="task" name="task" placeholder="Task name" required>
+            </label>
+            <label>Priority
+                <label for="important">
+                <input type="radio" id="important" name="priority" value="1-Important" required checked>
+                No escape anymore
+                </label>
+
+                <label for="medium">
+                <input type="radio" id="medium" name="priority" value="2-Medium" required>
+                I will do it tomorrow
+                </label>
+
+                <label for="low">
+                <input type="radio" id="low" name="priority" value="3-Low" required>
+                Keep cool
+                </label>
+            </label>
+        </div>
+        <div class="grid">
+            <button type="button" class="secondary outline" _="on click add @hidden to #add-task-form then remove @hidden from #add-task-btn">Cancel</button>
+            <button type="submit">Add task</button>
+        </div>
+    </form>
+</div>
